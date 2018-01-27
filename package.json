@@ -4,7 +4,7 @@
   "description": "Just a simple kanban",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --open --port 3000",
     "build": "webpack -p"
   },
   "repository": {
@@ -30,6 +30,7 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "choo": "^6.7.0"
+    "choo": "^6.7.0",
+    "nanocomponent": "^6.5.0"
   }
 }

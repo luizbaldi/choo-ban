@@ -26,5 +26,9 @@ module.exports = {
       inject: 'body'
     })
   ],
-  devtool: 'source-map'
+  devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true
+  }
+  
 }

@@ -1,15 +1,15 @@
 import choo from 'choo';
-import html from 'choo/html';
 
+/* Views */
+import home from './views/home';
+import notFound from './views/notFound';
+
+/* App */
 const app = choo();
 
-app.route('/', (state, emit) => {
-  return html`
-    <div>
-      Hello World
-    </div>
-  `
-});
+/* Routes */
+app.route('/', home);
+app.route('/*', notFound);
 
 app.mount(document.getElementById('root'))
 
