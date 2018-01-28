@@ -8,8 +8,13 @@ import './style/style.css';
 import home from './views/home';
 import notFound from './views/notFound';
 
+/* Stores */
+import boards from './stores/boards';
+
 /* App */
 const app = choo();
+
+app.use(boards);
 
 /* Routes */
 app.route('/', home);

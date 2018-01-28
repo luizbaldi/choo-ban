@@ -11,6 +11,10 @@ class Header extends Nanocomponent {
       </nav>
     `;
   }
+
+  update() {
+    return false;
+  }
 }
 
 export default Header;

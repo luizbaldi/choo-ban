@@ -14,6 +14,10 @@ class BoardItem extends Nanocomponent {
       </div>
     `;
   }
+
+  update() {
+    return true;
+  }
 };
 
 export default BoardItem;

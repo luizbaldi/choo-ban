@@ -1,6 +1,9 @@
 # Choo-ban
 Just a simple kanban :)
 
+## Demo
+http://cho-ban.surge.sh/
+
 ## Stack
 > Basically I decided to not use any boilerplate for this project. To use choo with ES6 imports I took webpack, and to help the development process I used webpack-dev-server. Basically that's it.
 
@@ -20,4 +23,14 @@ Just a simple kanban :)
 | webpack-dev-server | I just love webpack-dev-server, it's simple and very useful |
 | babel | Code transpilation and compatibility between browsers |
 
-_That's all_
+## Running locally
+After downloading (or cloning) this repo, just run:
+```
+yarn
+yarn start
+```
+_This will start the project locally on port 3000._
+
+___
+
+Any doubts or suggestions just contact me :)
