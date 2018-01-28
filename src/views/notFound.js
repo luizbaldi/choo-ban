@@ -1,10 +1,14 @@
 import html from 'choo/html';
 
 const notFound = () => html`
-  <div>
-    <h2>Error 404 - Page not found</h2>
+  <div class="container center">
+    <h2>
+      Error 404 - Page not found
+    </h2>    
     <hr />
-    <a href="/">Back to main page</a>
+    <a href='/' class="waves-effect waves-light btn btn-block">
+      Back to main page
+    </a>
   </div>
 `;
 

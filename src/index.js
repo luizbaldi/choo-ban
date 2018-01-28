@@ -1,5 +1,9 @@
 import choo from 'choo';
 
+/* Styles */
+import 'materialize-css/dist/css/materialize.min.css';
+import './style/style.css';
+
 /* Views */
 import home from './views/home';
 import notFound from './views/notFound';

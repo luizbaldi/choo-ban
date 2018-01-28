@@ -9,8 +9,9 @@ Just a simple kanban :)
 #### Production
 | Lib        | Reason           |
 | ------------- |:-------------:|
-| choo | Because you guys told to use it ¯\_(ツ)_/¯ |
+| choo | Because you guys told me to use it ¯\_(ツ)_/¯ |
 | nanocomponent | Simple lib to work with components in choo.js |
+| materialize | UI framework |
 
 #### Development 
 | Lib        | Reason           |

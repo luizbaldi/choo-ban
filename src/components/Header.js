@@ -8,7 +8,11 @@ class Header extends Nanocomponent {
 
   createElement() {
     return html`
-      <header>Choo-ban</header>
+      <nav>
+        <div class="nav-wrapper teal lighten-2">
+          <a href="/" class="brand-logo center">Choo-ban</a>
+        </div>
+      </nav>
     `;
   }
 }

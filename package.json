@@ -25,12 +25,15 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.9",
     "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
     "choo": "^6.7.0",
+    "materialize-css": "^1.0.0-alpha.3",
     "nanocomponent": "^6.5.0"
   }
 }
