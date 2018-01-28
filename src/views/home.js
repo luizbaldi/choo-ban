@@ -13,7 +13,7 @@ const home = (state, emit) => {
   const renderBoards = () => {
     const { boards, boardItems } = state;
     return boards.map(board => {
-      const currBoard = new Board(board.id, addNewItem);
+      const currBoard = new Board(board.id, addNewItem, removeItem);
       const currBoardItems = boardItems.filter(boardItem => boardItem.boardId === board.id);
       return currBoard.render(board.title, currBoardItems);
     });
@@ -27,10 +27,14 @@ const home = (state, emit) => {
       preConfirm: () => document.getElementById('board-title').value
     })
 
-    if (value) {
+    if (typeof value === 'string') {
       emit('boards:add', value);
     } else {
-      alert('You should type the name to procced.');
+      swal(
+        'Ops...',
+        'You should type the board title to procced :)',
+        'warning'
+      );
     }
   }
 
@@ -39,14 +43,14 @@ const home = (state, emit) => {
       title: 'New board item',
       html: `
         <input id="item-title" class="swal2-input" placeholder="Title">
-        <input id="item-subtitle" class="swal2-input" placeholder="Subtitle">`,
+        <input id="item-subtitle" class="swal2-input" placeholder="Subtitle (optional)">`,
       focusConfirm: false,
       preConfirm: () => {
         const title = document.getElementById('item-title').value;
         const subtitle = document.getElementById('item-subtitle').value;
         return { title, subtitle };
       }
-    })
+    });
     
     if (value.title) {
       emit('boardItem:add', value, boardId);
@@ -55,8 +59,29 @@ const home = (state, emit) => {
         'Ops...',
         'You must fill the title to create an item :)',
         'warning'
-      )
+      );
     }
+  }
+
+  const removeItem = (item) => {
+    swal({
+      title: `Delete item: ${item.title}`,
+      text: `Do you want to remove it from this board?`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then(result => {
+      if (result.value) {
+        emit('boardItem:remove', item.id);
+        swal(
+          'Done!',
+          'The item was sucessfully removed!',
+          'success'
+        );
+      }
+    })
   }
   
   const boardAdd = new BoardAdd(addNewBoard);

@@ -38,3 +38,38 @@
 .board-add:hover {
   cursor: pointer;
 }
+
+.board-item-reveal {
+  overflow-y: hidden !important;
+  padding: 4px 14px !important;
+}
+
+.board-item-reveal .actions {
+  margin-top: 30px;
+}
+
+.board-item-reveal .actions span {
+  width: 48%;
+  display: inline-block;
+}
+
+.board-item-reveal .actions span:hover {
+  cursor: pointer;
+}
+
+.board-item-reveal .card-title {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  padding-right: 6px;
+}
+
+.board-item-reveal .card-title i {
+  font-size: 20px;
+  line-height: 0px;
+}
+
+.activator {
+  cursor: pointer;
+}
