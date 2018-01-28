@@ -1,3 +1,40 @@
 .btn-block {
   width: 100%;
 }
+
+.home-container {
+  background-image: url('../img/bg.png');
+  height: 100vh;
+  margin-bottom: 0;
+}
+
+.home-container .content {
+  padding: 20px;
+}
+
+.board-item-title {
+  font-size: 18px;
+}
+
+.board-item-subtitle {
+  font-size: 14px;
+}
+
+.board-add {
+  text-align: center;
+  width: 100%;
+  font-size: 2em;
+}
+
+.board-add > i {
+  display: block;
+}
+
+.board-add > span {
+  margin-top: 12px;
+  display: block;
+}
+
+.board-add:hover {
+  cursor: pointer;
+}

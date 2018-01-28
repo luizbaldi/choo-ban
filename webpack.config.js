@@ -17,7 +17,17 @@ module.exports = {
           presets: ['env']
         }
       },
-      { test: /\.css$/, loader: "style-loader!css-loader" },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 40000 }
+          },
+          'image-webpack-loader'
+        ]
+      },
+      { test: /\.css$/, loader: "style-loader!css-loader" }
     ]
   },
   plugins: [

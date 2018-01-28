@@ -1,11 +1,7 @@
-import html from 'bel';
+import html from 'choo/html';
 import Nanocomponent from 'nanocomponent';
 
 class Header extends Nanocomponent {
-  constructor() {
-    super();
-  }
-
   createElement() {
     return html`
       <nav>
