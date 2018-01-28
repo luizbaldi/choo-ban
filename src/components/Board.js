@@ -8,18 +8,26 @@ import BoardItem from '../components/BoardItem';
 const boardItem = new BoardItem();
 
 class Board extends Nanocomponent {
-  createElement(title) {
+  constructor(id, addNewItem) {
+    super();
+    
+    this.id = id;
+    this.addNewItem = addNewItem;
+  }
+  renderItems(items) {
+    return items.map(item => new BoardItem().render(item.title, item.subtitle));
+  }
+  createElement(title, items) {
     return html`
       <div class="col s12 m4">
         <div class="card teal darken-4">
           <div class="card-content white-text">
             <span class="card-title center">${title}</span>
             <div class="row">
-              ${boardItem.render('Potatoe', 'Yah man potatu is good')}
-              ${boardItem.render('Hmm', 'Ran out of ideas, I\'m sorry bro')}
+              ${this.renderItems(items)}
             </div>
             <div class="container">
-              <a class="waves-effect waves-light btn btn-block">
+              <a class="waves-effect waves-light btn btn-block" onclick=${() => this.addNewItem(this.id)}>
                 <i class="material-icons left">add</i>
                 New Item
               </a>

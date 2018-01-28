@@ -11,14 +11,15 @@ http://cho-ban.surge.sh/
 
 #### Production
 | Lib        | Reason           |
-| ------------- |:-------------:|
+| ------------- |-------------|
 | choo | Because you guys told me to use it ¯\_(ツ)_/¯ |
 | nanocomponent | Simple lib to work with components in choo.js |
 | materialize | UI framework |
+| sweetalert | Simple and beautiful popup boxes |
 
 #### Development 
 | Lib        | Reason           |
-| ------------- |:-------------:|
+| ------------- |-------------|
 | webpack | ES6 Module imports and simplicity |
 | webpack-dev-server | I just love webpack-dev-server, it's simple and very useful |
 | babel | Code transpilation and compatibility between browsers |
