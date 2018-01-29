@@ -3,10 +3,12 @@ import Nanocomponent from 'nanocomponent';
 import materialize from 'materialize-css';
 
 class BoardItem extends Nanocomponent {
-  constructor(removeItem) {
+  constructor(boardId, removeItem, moveItem) {
     super();
 
+    this.boardId = boardId;
     this.removeItem = removeItem;
+    this.moveItem = moveItem;
   }
   renderItemActions(item) {
     const actions = [
@@ -17,7 +19,7 @@ class BoardItem extends Nanocomponent {
       },
       {
         name: 'Move',
-        code: () => console.log('moving...'),
+        code: () => this.moveItem(this.boardId, item.id),
         icon: 'keyboard_arrow_right'
       }
     ];

@@ -13,7 +13,7 @@ const home = (state, emit) => {
   const renderBoards = () => {
     const { boards, boardItems } = state;
     return boards.map(board => {
-      const currBoard = new Board(board.id, addNewItem, removeItem);
+      const currBoard = new Board(board.id, addNewItem, removeItem, moveItem);
       const currBoardItems = boardItems.filter(boardItem => boardItem.boardId === board.id);
       return currBoard.render(board.title, currBoardItems);
     });
@@ -58,6 +58,35 @@ const home = (state, emit) => {
       swal(
         'Ops...',
         'You must fill the title to create an item :)',
+        'warning'
+      );
+    }
+  }
+
+  const moveItem = async (boardId, itemId) => {
+    const inputOptions = {};
+    state.boards.forEach(board => {
+      if (board.id !== boardId) {
+        inputOptions[board.id] = board.title;
+      }
+    });
+    if (Object.values(inputOptions).length) {
+      const { value } = await swal({
+        title: 'Move board item',
+        input: 'select',
+        inputOptions,
+        inputPlaceholder: 'Select a board destination',
+        showCancelButton: true,
+        preConfirm: boardId => Promise.resolve(parseInt(boardId))
+      });
+  
+      if (value) {
+        emit('boardItem:move', itemId, value);
+      }
+    } else {
+      swal(
+        'Ops...',
+        'Seems like you have no boards to move yet. Add more boards on \'New board\' button :)',
         'warning'
       );
     }

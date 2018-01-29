@@ -19,6 +19,12 @@ const boardItems = (state, emitter) => {
       state.boardItems.splice(itemToRemoveIdx, 1);
       emitter.emit(state.events.RENDER);
     });
+
+    emitter.on('boardItem:move', (itemId, newBoardId) => {
+      const currBoardItemIdx = state.boardItems.findIndex(boardItem => boardItem.id === itemId);
+      state.boardItems[currBoardItemIdx].boardId = newBoardId;
+      emitter.emit(state.events.RENDER);
+    });
   });
 };
 

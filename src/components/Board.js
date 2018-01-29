@@ -8,15 +8,16 @@ import BoardItem from '../components/BoardItem';
 const boardItem = new BoardItem();
 
 class Board extends Nanocomponent {
-  constructor(id, addNewItem, removeItem) {
+  constructor(id, addNewItem, removeItem, moveItem) {
     super();
     
     this.id = id;
     this.addNewItem = addNewItem;
     this.removeItem = removeItem;
+    this.moveItem = moveItem;
   }
   renderItems(items) {
-    return items.map(item => new BoardItem(this.removeItem).render(item));
+    return items.map(item => new BoardItem(this.id, this.removeItem, this.moveItem).render(item));
   }
   createElement(title, items) {
     return html`
