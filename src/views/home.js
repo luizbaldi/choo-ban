@@ -93,29 +93,17 @@ const home = (state, emit) => {
   }
 
   const removeItem = (item) => {
-    swal({
-      title: `Delete item: ${item.title}`,
-      text: `Do you want to remove it from this board?`,
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
-    }).then(result => {
-      if (result.value) {
-        emit('boardItem:remove', item.id);
-        swal(
-          'Done!',
-          'The item was sucessfully removed!',
-          'success'
-        );
-      }
-    })
+    emit('boardItem:remove', item.id);
+    swal(
+      'Done!',
+      `${item.title} was sucessfully removed.`,
+      'success'
+    );
   }
   
   const boardAdd = new BoardAdd(addNewBoard);
   return html`
-    <div class="row home-container">
+    <div class="home-container">
       ${header.render()}
       <div class="content">
         ${renderBoards()}

@@ -1,15 +1,37 @@
-.btn-block {
-  width: 100%;
-}
-
-.home-container {
-  background-image: url('../img/bg.png');
-  height: 100vh;
-  margin-bottom: 0;
+body, html, .home-container {
+  height: 100%;
+  min-height: 100%;
+  margin:0;
+  background-color: #fafafa;
+  white-space: nowrap;
 }
 
 .home-container .content {
-  padding: 20px;
+  padding: 80px 16px 16px 16px;
+  box-sizing: border-box;
+  height: 100%;
+  z-index: 1;
+}
+
+.home-container .content .card {
+  margin: 5px 0px;
+}
+
+.board {
+  width: 300px;
+  display: inline-block;
+  margin: 0 6px;
+  vertical-align:top;
+  height: 100%;
+}
+
+.board .card {
+  height: 100%;
+  margin: 0;
+}
+
+.btn-block {
+  width: 100%;
 }
 
 .board-item-title {
@@ -72,4 +94,29 @@
 
 .activator {
   cursor: pointer;
+}
+
+.custom-nav {
+  position: absolute;
+  z-index: 2;
+}
+
+html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown), body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+  height: 100% !important;
+}
+
+.swal2-popup .swal2-content {
+  white-space: initial;
+}
+
+@media (max-width: 768px) {
+  .board {
+    width: 100%;
+    height: initial;
+    margin: auto;
+  }
+
+  .home-container {
+    white-space: initial;
+  }
 }

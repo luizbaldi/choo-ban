@@ -9,9 +9,9 @@ class Board extends Nanocomponent {
   }
   createElement() {
     return html`
-      <div class="col s12 m4">
+      <div class="board">
         <div class="card teal lighten-5">
-          <div class="card-content valign-wrapper">
+          <div class="card-content">
             <div class="board-add" onclick="${this.addNewBoard}">
               <i class="medium material-icons">add_circle</i>
               <span>New board</span>

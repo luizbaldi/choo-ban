@@ -21,10 +21,11 @@ class Board extends Nanocomponent {
   }
   createElement(title, items) {
     return html`
-      <div class="col s12 m4">
+      <div class="board">
         <div class="card teal darken-4">
           <div class="card-content white-text">
             <span class="card-title center">${title}</span>
+            <hr />
             <div class="row">
               ${this.renderItems(items)}
             </div>
