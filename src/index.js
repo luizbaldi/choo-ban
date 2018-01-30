@@ -12,12 +12,14 @@ import notFound from './views/notFound';
 /* Stores */
 import boards from './stores/boards';
 import boardItems from './stores/boardItems';
+import itemComments from './stores/itemComments';
 
 /* App */
 const app = choo();
 
 app.use(boards);
 app.use(boardItems);
+app.use(itemComments);
 
 /* Routes */
 app.route('/', home);
