@@ -2,13 +2,14 @@ import html from 'choo/html';
 import Nanocomponent from 'nanocomponent';
 import materialize from 'materialize-css';
 
-class BoardItem extends Nanocomponent {
-  constructor(boardId, removeItem, moveItem) {
-    super();
 
+class BoardItem extends Nanocomponent {
+  constructor(boardId, removeItem, moveItem, addItemComment) {
+    super();
     this.boardId = boardId;
     this.removeItem = removeItem;
     this.moveItem = moveItem;
+    this.addItemComment = addItemComment;
   }
   renderItemActions(item) {
     const actions = [
@@ -21,6 +22,11 @@ class BoardItem extends Nanocomponent {
         name: 'Move',
         code: () => this.moveItem(this.boardId, item.id),
         icon: 'keyboard_arrow_right'
+      },
+      {
+        name: 'Comment',
+        code: () => this.addItemComment(this.boardId, item.id),
+        icon: 'add_circle_outline'
       }
     ];
     
@@ -39,7 +45,8 @@ class BoardItem extends Nanocomponent {
       </div>
     `;
   }
-  createElement(item) {
+  
+  createElement(item, comments) {
     const { title, subtitle } = item;
     return html`
       <div class="col s12">
@@ -48,6 +55,7 @@ class BoardItem extends Nanocomponent {
             <i class="material-icons right activator">more_vert</i>
             <div class="board-item-title">${title}</div>
             <div class="board-item-subtitle">${subtitle}</div>
+            <div class="board-item-comments">${comments.length} <i class="material-icons">comment</i></div>
           </div>
           ${this.renderItemActions(item)}
         </div>
