@@ -36,6 +36,9 @@ body, html, .home-container {
 
 .board-item-title {
   font-size: 18px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .board-item-subtitle {

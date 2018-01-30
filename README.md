@@ -30,7 +30,7 @@ After downloading (or cloning) this repo, just run:
 yarn
 yarn start
 ```
-_This will start the project locally on port 3000._
+_This will start the project locally on port 3000 and open a tab in your browser automatically._
 
 ___
 

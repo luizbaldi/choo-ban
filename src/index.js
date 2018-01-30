@@ -10,12 +10,14 @@ import home from './views/home';
 import notFound from './views/notFound';
 
 /* Stores */
+import persistence from './stores/persistence';
 import boards from './stores/boards';
 import boardItems from './stores/boardItems';
 
 /* App */
 const app = choo();
 
+app.use(persistence);
 app.use(boards);
 app.use(boardItems);
 

@@ -1,5 +1,7 @@
+import storage from '../util/storage';
+
 const boards = (state, emitter) => {
-  state.boards = [];
+  state.boards = storage.get('boards');
 
   emitter.on('DOMContentLoaded', () => {
     emitter.on('boards:add', title => {
