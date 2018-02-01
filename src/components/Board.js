@@ -8,18 +8,23 @@ import BoardItem from '../components/BoardItem';
 const boardItem = new BoardItem();
 
 class Board extends Nanocomponent {
-  constructor(id, addNewItem, removeItem, moveItem) {
+  constructor(id, addNewItem, removeItem, moveItem, addItemComment) {
     super();
     
     this.id = id;
     this.addNewItem = addNewItem;
     this.removeItem = removeItem;
     this.moveItem = moveItem;
+    this.addItemComment = addItemComment;
   }
-  renderItems(items) {
-    return items.map(item => new BoardItem(this.id, this.removeItem, this.moveItem).render(item));
+  renderItems(items, itemComments) {
+    
+    return items.map(item => {
+      let comments = itemComments.filter( itemComment => itemComment.boardId === this.id && itemComment.itemId === item.id);
+      return new BoardItem(this.id, this.removeItem, this.moveItem, this.addItemComment).render(item, comments)
+    });
   }
-  createElement(title, items) {
+  createElement(title, items, itemComments) {
     return html`
       <div class="board">
         <div class="card teal darken-4">
@@ -27,7 +32,7 @@ class Board extends Nanocomponent {
             <span class="card-title center">${title}</span>
             <hr />
             <div class="row">
-              ${this.renderItems(items)}
+              ${this.renderItems(items, itemComments)}
             </div>
             <div class="container">
               <a class="waves-effect waves-light btn btn-block" onclick=${() => this.addNewItem(this.id)}>
