@@ -12,6 +12,7 @@ class BoardItem extends Nanocomponent {
     this.moveItem = moveItem;
     this.addItemComment = addItemComment;
   }
+  
   renderItemActions(item, comments) {
     const actions = [
       {
@@ -27,7 +28,7 @@ class BoardItem extends Nanocomponent {
       {
         name: 'Comment',
         code: () => this.addItemComment(this.boardId, item.id),
-        icon: 'add_circle_outline'
+        icon: 'insert_comment'
       }
     ];
     
@@ -45,6 +46,18 @@ class BoardItem extends Nanocomponent {
         </div>
       </div>
     `;
+  }
+
+  showComments(comments) {
+    const title = !!comments.length ? `Comments` : `This item has no comments yet.`
+    swal({
+      title: title,
+      html: `${comments.map(comment => {
+        return `
+          <li style="list-style: none">${comment.comment}</li>
+          <hr />`
+      })}`
+    });
   }
   
   createElement(item, comments) {
@@ -65,16 +78,6 @@ class BoardItem extends Nanocomponent {
         </div>
       </div>
     `;
-  }
-
-  showComments(comments) {
-    const title = !!comments.length? `Comments` : `This item has no comments yet.` 
-    swal({
-      title: title,
-      html:`${comments.map(comment => {
-        return `<li style="list-style: none">${comment.comment}</li>`
-      })}`
-    });
   }
 
   update() {

@@ -1,5 +1,8 @@
+import storage from '../util/storage';
+
 const itemComments = (state, emitter) => {
-    state.itemComments = [];
+    state.itemComments = storage.get('itemComments')
+
     emitter.on('DOMContentLoaded', () => {
         emitter.on('itemComment:add', (boardId, itemId, comment) => {
             const newItemComment = {
