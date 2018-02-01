@@ -68,11 +68,12 @@ class BoardItem extends Nanocomponent {
   }
 
   showComments(comments) {
+    const title = !!comments.length? `Comments` : `This item has no comments yet.` 
     swal({
-      title: `Comments`,
+      title: title,
       html:`${comments.map(comment => {
         return `<li style="list-style: none">${comment.comment}</li>`
-      })}`,
+      })}`
     });
   }
 
