@@ -95,6 +95,7 @@ const home = (state, emit) => {
   
       if (value) {
         emit('boardItem:move', itemId, value);
+        emit('itemComment:move', itemId, boardId, value)
       }
     } else {
       swal(

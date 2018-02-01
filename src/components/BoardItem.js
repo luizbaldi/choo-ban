@@ -1,6 +1,7 @@
 import html from 'choo/html';
 import Nanocomponent from 'nanocomponent';
 import materialize from 'materialize-css';
+import swal from 'sweetalert2';
 
 
 class BoardItem extends Nanocomponent {
@@ -11,7 +12,7 @@ class BoardItem extends Nanocomponent {
     this.moveItem = moveItem;
     this.addItemComment = addItemComment;
   }
-  renderItemActions(item) {
+  renderItemActions(item, comments) {
     const actions = [
       {
         name: 'Remove',
@@ -55,12 +56,24 @@ class BoardItem extends Nanocomponent {
             <i class="material-icons right activator">more_vert</i>
             <div class="board-item-title">${title}</div>
             <div class="board-item-subtitle">${subtitle}</div>
-            <div class="board-item-comments">${comments.length} <i class="material-icons">comment</i></div>
+            <div class="board-item-comments">
+              <span>${comments.length}</span>
+              <i class="material-icons" onclick=${() => this.showComments(comments)}>comment</i>
+            </div>
           </div>
-          ${this.renderItemActions(item)}
+          ${this.renderItemActions(item, comments)}
         </div>
       </div>
     `;
+  }
+
+  showComments(comments) {
+    swal({
+      title: `Comments`,
+      html:`${comments.map(comment => {
+        return `<li style="list-style: none">${comment.comment}</li>`
+      })}`,
+    });
   }
 
   update() {

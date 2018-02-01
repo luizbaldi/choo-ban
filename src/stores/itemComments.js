@@ -10,7 +10,15 @@ const itemComments = (state, emitter) => {
             }
             state.itemComments.push(newItemComment);
             emitter.emit(state.events.RENDER);
-        })
+        });
+        emitter.on('itemComment:move', (itemId, oldBoard, newBoard) => {
+            state.itemComments.forEach(element => {
+                if(element.boardId === oldBoard && element.itemId === itemId) {
+                    element.boardId = newBoard;
+                }
+            });
+            emitter.emit(state.events.RENDER);            
+        });
     });
 }
 
