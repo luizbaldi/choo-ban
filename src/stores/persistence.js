@@ -2,7 +2,8 @@ import storage from '../util/storage';
 
 const stores = [
   'boards',
-  'boardItems'
+  'boardItems',
+  'itemComments'
 ];
 
 const boardItems = (state, emitter) => {

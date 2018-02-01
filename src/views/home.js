@@ -11,11 +11,11 @@ const header = new Header();
 
 const home = (state, emit) => {
   const renderBoards = () => {
-    const { boards, boardItems } = state;
+    const { boards, boardItems, itemComments } = state;
     return boards.map(board => {
-      const currBoard = new Board(board.id, addNewItem, removeItem, moveItem);
+      const currBoard = new Board(board.id, addNewItem, removeItem, moveItem, addItemComment);
       const currBoardItems = boardItems.filter(boardItem => boardItem.boardId === board.id);
-      return currBoard.render(board.title, currBoardItems);
+      return currBoard.render(board.title, currBoardItems, itemComments);
     });
   }
 
@@ -63,6 +63,19 @@ const home = (state, emit) => {
     }
   }
 
+  const addItemComment = async (boardId, itemId) => {
+    const { value } = await swal({
+      title: 'New comment',
+      html: `<input id="board-title" class="swal2-input" placeholder="Input your comment...">`,
+      focusConfirm: false,
+      preConfirm: () => document.getElementById('board-title').value
+    })
+    if (value) {
+      emit('itemComment:add', boardId, itemId, value);
+    }
+    
+  }
+
   const moveItem = async (boardId, itemId) => {
     const inputOptions = {};
     state.boards.forEach(board => {
@@ -82,6 +95,7 @@ const home = (state, emit) => {
   
       if (value) {
         emit('boardItem:move', itemId, value);
+        emit('itemComment:move', itemId, boardId, value)
       }
     } else {
       swal(
