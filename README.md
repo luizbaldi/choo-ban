@@ -12,7 +12,7 @@ http://cho-ban.surge.sh/
 #### Production
 | Lib        | Reason           |
 | ------------- |-------------|
-| choo | Because you guys told me to use it ¯\_(ツ)_/¯ |
+| choo | Simple frontend framework  |
 | nanocomponent | Simple lib to work with components in choo.js |
 | materialize | UI framework |
 | sweetalert | Simple and beautiful popup boxes |
@@ -31,6 +31,15 @@ yarn
 yarn start
 ```
 _This will start the project locally on port 3000 and open a tab in your browser automatically._
+
+## Want to contribute?
+Check our [todo](https://github.com/luizbaldi/choo-ban/blob/master/todo.md) with the features I think will fit in the application and send a PR :)
+
+If you have another idea for a feature, it's also very welcome!
+
+## Contributors
+- [Luiz Baldi](https://github.com/luizbaldi)
+- [Pedro Fontes](https://github.com/phfontess)
 
 ___
 
