@@ -2,7 +2,7 @@
 Just a simple kanban :)
 
 ## Demo
-http://cho-ban.surge.sh/
+http://choo-ban.surge.sh
 
 ## Stack
 > Basically I decided to not use any boilerplate for this project. To use choo with ES6 imports I took webpack, and to help the development process I used webpack-dev-server. Basically that's it.
@@ -17,7 +17,7 @@ http://cho-ban.surge.sh/
 | materialize | UI framework |
 | sweetalert | Simple and beautiful popup boxes |
 
-#### Development 
+#### Development
 | Lib        | Reason           |
 | ------------- |-------------|
 | webpack | ES6 Module imports and simplicity |

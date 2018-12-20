@@ -1,29 +1,29 @@
-import html from 'choo/html';
-import Nanocomponent from 'nanocomponent';
+import html from 'choo/html'
+import Nanocomponent from 'nanocomponent'
 
 /* UI Components */
-import BoardItem from '../components/BoardItem';
-
-/* UI Instances */
-const boardItem = new BoardItem();
+import BoardItem from './BoardItem'
 
 class Board extends Nanocomponent {
   constructor(id, addNewItem, removeItem, moveItem, addItemComment) {
-    super();
-    
-    this.id = id;
-    this.addNewItem = addNewItem;
-    this.removeItem = removeItem;
-    this.moveItem = moveItem;
-    this.addItemComment = addItemComment;
+    super()
+
+    this.id = id
+    this.addNewItem = addNewItem
+    this.removeItem = removeItem
+    this.moveItem = moveItem
+    this.addItemComment = addItemComment
   }
+
   renderItems(items, itemComments) {
-    
-    return items.map(item => {
-      let comments = itemComments.filter( itemComment => itemComment.boardId === this.id && itemComment.itemId === item.id);
-      return new BoardItem(this.id, this.removeItem, this.moveItem, this.addItemComment).render(item, comments)
-    });
+    return items.map((item) => {
+      const { id, removeItem, moveItem, addItemComment } = this
+      const comments = itemComments
+        .filter(({ boardId, itemId }) => boardId === id && itemId === item.id)
+      return new BoardItem(id, removeItem, moveItem, addItemComment).render(item, comments)
+    })
   }
+
   createElement(title, items, itemComments) {
     return html`
       <div class="board">
@@ -43,12 +43,12 @@ class Board extends Nanocomponent {
           </div>
         </div>
       </div>
-    `;
+    `
   }
 
   update() {
-    return true;
+    return true
   }
 }
 
-export default Board;
+export default Board

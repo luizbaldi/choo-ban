@@ -1,4 +1,4 @@
-import html from 'choo/html';
+import html from 'choo/html'
 
 const notFound = () => html`
   <div class="container center">
@@ -10,6 +10,6 @@ const notFound = () => html`
       Back to main page
     </a>
   </div>
-`;
+`
 
-export default notFound;
+export default notFound

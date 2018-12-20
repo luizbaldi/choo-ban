@@ -1,5 +1,5 @@
-import html from 'choo/html';
-import Nanocomponent from 'nanocomponent';
+import html from 'choo/html'
+import Nanocomponent from 'nanocomponent'
 
 class Header extends Nanocomponent {
   createElement() {
@@ -12,12 +12,12 @@ class Header extends Nanocomponent {
           </ul>
         </div>
       </nav>
-    `;
+    `
   }
 
   update() {
-    return false;
+    return false
   }
 }
 
-export default Header;
+export default Header

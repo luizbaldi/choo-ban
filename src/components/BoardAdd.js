@@ -1,12 +1,13 @@
-import html from 'choo/html';
-import Nanocomponent from 'nanocomponent';
+import html from 'choo/html'
+import Nanocomponent from 'nanocomponent'
 
 class Board extends Nanocomponent {
   constructor(addNewBoard) {
-    super();
-    
-    this.addNewBoard = addNewBoard;
+    super()
+
+    this.addNewBoard = addNewBoard
   }
+
   createElement() {
     return html`
       <div class="board">
@@ -19,12 +20,12 @@ class Board extends Nanocomponent {
           </div>
         </div>
       </div>
-    `;
+    `
   }
 
   update() {
-    return false;
+    return false
   }
 }
 
-export default Board;
+export default Board

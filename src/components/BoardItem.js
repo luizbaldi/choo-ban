@@ -1,19 +1,17 @@
-import html from 'choo/html';
-import Nanocomponent from 'nanocomponent';
-import materialize from 'materialize-css';
-import swal from 'sweetalert2';
-
+import html from 'choo/html'
+import Nanocomponent from 'nanocomponent'
+import swal from 'sweetalert2'
 
 class BoardItem extends Nanocomponent {
   constructor(boardId, removeItem, moveItem, addItemComment) {
-    super();
-    this.boardId = boardId;
-    this.removeItem = removeItem;
-    this.moveItem = moveItem;
-    this.addItemComment = addItemComment;
+    super()
+    this.boardId = boardId
+    this.removeItem = removeItem
+    this.moveItem = moveItem
+    this.addItemComment = addItemComment
   }
-  
-  renderItemActions(item, comments) {
+
+  renderItemActions(item) {
     const actions = [
       {
         name: 'Remove',
@@ -30,8 +28,8 @@ class BoardItem extends Nanocomponent {
         code: () => this.addItemComment(this.boardId, item.id),
         icon: 'insert_comment'
       }
-    ];
-    
+    ]
+
     return html`
       <div class="card-reveal board-item-reveal">
         <span class="card-title grey-text text-darken-4"><i class="material-icons close">close</i></span>
@@ -41,27 +39,25 @@ class BoardItem extends Nanocomponent {
               ${action.name}
               <br />
               <i class="material-icons">${action.icon}</i>
-            </span>  
+            </span>
           `)}
         </div>
       </div>
-    `;
+    `
   }
 
   showComments(comments) {
-    const title = !!comments.length ? `Comments` : `This item has no comments yet.`
+    const title = comments.length ? 'Comments' : 'This item has no comments yet.'
     swal({
-      title: title,
-      html: `${comments.map(comment => {
-        return `
+      title,
+      html: `${comments.map(comment => `
           <li style="list-style: none">${comment.comment}</li>
-          <hr />`
-      })}`
-    });
+          <hr />`)}`
+    })
   }
-  
+
   createElement(item, comments) {
-    const { title, subtitle } = item;
+    const { title, subtitle } = item
     return html`
       <div class="col s12">
         <div class="card teal darken-2">
@@ -74,15 +70,15 @@ class BoardItem extends Nanocomponent {
               <i class="material-icons" onclick=${() => this.showComments(comments)}>comment</i>
             </div>
           </div>
-          ${this.renderItemActions(item, comments)}
+          ${this.renderItemActions(item)}
         </div>
       </div>
-    `;
+    `
   }
 
   update() {
-    return true;
+    return true
   }
-};
+}
 
-export default BoardItem;
+export default BoardItem
