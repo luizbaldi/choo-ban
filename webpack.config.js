@@ -1,20 +1,23 @@
-const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: './src/index.js',
   output: {
     path: path.resolve('dist'),
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
-      { 
+    rules: [
+      {
         test: /\.js$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
-        options: {
-          presets: ['env']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime']
+          }
         }
       },
       {
@@ -27,11 +30,11 @@ module.exports = {
           'image-webpack-loader'
         ]
       },
-      { test: /\.css$/, loader: "style-loader!css-loader" }
+      { test: /\.css$/, loader: 'style-loader!css-loader' }
     ]
   },
   plugins: [
-    new htmlWebpackPlugin({
+    new HTMLWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
       inject: 'body'
@@ -41,5 +44,4 @@ module.exports = {
   devServer: {
     historyApiFallback: true
   }
-  
 }
